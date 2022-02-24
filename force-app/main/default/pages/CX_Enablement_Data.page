@@ -1,0 +1,17 @@
+<apex:page controller="CX_Enablement_Data_Controller" lightningStylesheets="true">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1">
+                <apex:slds >
+                <center>
+                    <apex:commandButton value="Create Data" action="{!createData}" disabled="{!dataExists}"
+                     onclick="window.location.top.reload();"/>
+                </center>
+                </apex:slds>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+<!-- style="background:LightBlue;height:50px;width:150px;" -->
