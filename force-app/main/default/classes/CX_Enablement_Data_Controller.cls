@@ -13,31 +13,30 @@ public class CX_Enablement_Data_Controller {
         private set;
     }
     
-    public Id systemAdminProfileId{
+    public Id platformProfileId{
         get{
-            if(systemAdminProfileId == null){
+            if(platformProfileId == null){
                 Profile p = [SELECT Id
                              FROM Profile
                              WHERE Name = 'Standard Platform user'
                              LIMIT 1];
-                systemAdminProfileId = p.Id;
+                             platformProfileId = p.Id;
             }
-            return systemAdminProfileId;
+            return platformProfileId;
         }
         private set;
     }
-    
-      public String systemAdminEmail{
+
+    public Id recruitingPermSet{
         get{
-            if(systemAdminEmail == null){
-                String userName = UserInfo.getUserName();
-                User u = [SELECT Email 
-                             From User 
-                             Where Username =: userName 
-                          LIMIT 1];
-                systemAdminEmail = u.Email;
+            if(recruitingPermSet == null){
+                PermissionSet p = [SELECT Id
+                             FROM PermissionSet
+                             WHERE Name = 'Recruiting_Manager'
+                             LIMIT 1];
+                             recruitingPermSet = p.Id;
             }
-            return systemAdminEmail;
+            return recruitingPermSet;
         }
         private set;
     }
@@ -51,7 +50,7 @@ public class CX_Enablement_Data_Controller {
         // Users
         
         String userName = UserInfo.getUserName();
-        User activeUser = [Select Email From User where Username = : userName limit 1];
+        User activeUser = [Select Email From User where Username = :userName limit 1];
         String userEmail = activeUser.Email;
         
         String orgId = UserInfo.getOrganizationId();
@@ -70,7 +69,7 @@ public class CX_Enablement_Data_Controller {
             TimeZoneSidKey = 'America/Los_Angeles',
             LocaleSidKey = 'en_US', 
             EmailEncodingKey = 'UTF-8',
-            ProfileId = systemAdminProfileId, 
+            ProfileId = platformProfileId, 
             LanguageLocaleKey = 'en_US',
             IsActive = True
         );
@@ -84,14 +83,19 @@ public class CX_Enablement_Data_Controller {
             TimeZoneSidKey = 'America/Los_Angeles',
             LocaleSidKey = 'en_US', 
             EmailEncodingKey = 'UTF-8',
-            ProfileId = systemAdminProfileId, 
+            ProfileId = platformProfileId, 
             LanguageLocaleKey = 'en_US',
             IsActive = True
         );
         users.add(user2);        
         insert users;
         
-        
+        PermissionSetAssignment psa1 = new PermissionSetAssignment (PermissionSetId = recruitingPermSet, AssigneeId = user1.Id);
+        insert psa1;
+
+        PermissionSetAssignment psa2 = new PermissionSetAssignment (PermissionSetId = recruitingPermSet, AssigneeId = user2.Id);
+        insert psa2;
+
         //Positions
         List<Position__c> positions = new List<Position__c>();
         Position__c position1 = new Position__c(
@@ -169,7 +173,7 @@ public class CX_Enablement_Data_Controller {
         Candidate__c candidate1 = new Candidate__c(
             First_Name__c = 'Paul',
             Last_Name__c = 'Allan',
-            Email__c = systemAdminEmail,
+            Email__c = 'jdoe@example.com',
             Street_Address_1__c = '111 Montclair Street',
             City__c = 'Boston',
             State_Province__c = 'MA',
@@ -184,7 +188,7 @@ public class CX_Enablement_Data_Controller {
         Candidate__c candidate2 = new Candidate__c(
             First_Name__c = 'Jamal',
             Last_Name__c = 'Cooks',
-            Email__c = systemAdminEmail,
+            Email__c = 'jdoe@example.com',
             Street_Address_1__c = '4450 Main Street',
             City__c = 'New York',
             State_Province__c = 'NY',
@@ -199,7 +203,7 @@ public class CX_Enablement_Data_Controller {
         Candidate__c candidate3 = new Candidate__c(
             First_Name__c = 'Patrick',
             Last_Name__c = 'Bateman',
-            Email__c = systemAdminEmail,
+            Email__c = 'jdoe@example.com',
             Street_Address_1__c = '50 Windy Court',
             City__c = 'Chicago',
             State_Province__c = 'IL',
@@ -214,7 +218,7 @@ public class CX_Enablement_Data_Controller {
         Candidate__c candidate4 = new Candidate__c(
             First_Name__c = 'Cynthia',
             Last_Name__c = 'Capobianco',
-            Email__c = systemAdminEmail,
+            Email__c = 'jdoe@example.com',
             Street_Address_1__c = '22 14th Avenue',
             City__c = 'San Diego',
             State_Province__c = 'CA',
@@ -229,7 +233,7 @@ public class CX_Enablement_Data_Controller {
         Candidate__c candidate5 = new Candidate__c(
             First_Name__c = 'Stan',
             Last_Name__c = 'Sitwell',
-            Email__c = systemAdminEmail,
+            Email__c = 'jdoe@example.com',
             Street_Address_1__c = '150 Market Street',
             City__c = 'San Francisco',
             State_Province__c = 'CA',

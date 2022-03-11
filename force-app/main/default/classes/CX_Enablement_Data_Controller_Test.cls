@@ -3,7 +3,7 @@ private class CX_Enablement_Data_Controller_Test {
 
     static testMethod void testDataExists() {      
         
-        Profile p = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
+        Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard Platform User']; 
         
         String orgId = UserInfo.getOrganizationId();
         String dateString = String.valueof(Datetime.now()).replace(' ','').replace(':','').replace('-','');
@@ -34,8 +34,8 @@ private class CX_Enablement_Data_Controller_Test {
         PageReference testPage = Page.CX_Enablement_Data;
         Test.setCurrentPage(testPage);      
         System.assert(extTest.dataExists == false);
-        System.assert(extTest.systemAdminProfileId == p.Id);       
+        System.assert(extTest.platformProfileId == p.Id);
         extTest.createData();
-        System.assert(extTest.dataExists == true);      
+        System.assert(extTest.dataExists == true);
     }   
 }
