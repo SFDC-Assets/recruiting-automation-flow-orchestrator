@@ -5,9 +5,14 @@ private class CX_Enablement_Data_Controller_Test {
         
         Profile p = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
         
+        String orgId = UserInfo.getOrganizationId();
+        String dateString = String.valueof(Datetime.now()).replace(' ','').replace(':','').replace('-','');
+        Integer randomInt = Integer.valueOf(math.rint(math.random()*1000000));
+        String uniqueName = orgId + dateString + randomInt;
+        
         User newUser = new User();
         newUser.ProfileId = p.Id;
-        newUser.Username = 'TestInstructor101915@tandc.org';
+        newUser.Username = uniqueName + '@email.org';
         newUser.Alias = 'tinst';
         newUser.TimeZoneSidKey = 'America/Los_Angeles';
         newUser.LocaleSidKey = 'en_US';

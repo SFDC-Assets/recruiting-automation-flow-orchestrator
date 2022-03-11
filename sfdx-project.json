@@ -3,10 +3,11 @@
     {
       "path": "force-app",
       "default": true
-    }
+    },
+    { "path": "orchestrator" }
   ],
-  "name": "recruiting-automation-flow-orchestrator",
+  "name": "orchestrator-recruiting-demo",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "53.0"
+  "sourceApiVersion": "54.0"
 }
