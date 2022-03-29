@@ -87,6 +87,7 @@ public class CX_Enablement_Data_Controller {
             LanguageLocaleKey = 'en_US',
             IsActive = True
         );
+    
         users.add(user2);        
         insert users;
         
