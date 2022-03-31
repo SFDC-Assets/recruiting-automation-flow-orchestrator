@@ -18,7 +18,7 @@ public class CX_Enablement_Data_Controller {
             if(platformProfileId == null){
                 Profile p = [SELECT Id
                              FROM Profile
-                             WHERE Name = 'Standard Platform user'
+                             WHERE Name = 'System Administrator'
                              LIMIT 1];
                              platformProfileId = p.Id;
             }
