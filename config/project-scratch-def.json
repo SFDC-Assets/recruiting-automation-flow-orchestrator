@@ -1,7 +1,7 @@
 {
   "orgName": "dopoka company",
   "edition": "Enterprise",
-  "features": ["EnableSetPasswordInApi"],
+  "features": ["EnableSetPasswordInApi", "ServiceUser", "SalesUser"],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true

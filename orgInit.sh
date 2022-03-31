@@ -12,5 +12,7 @@ sfdx shane:user:password:set -g User -l User -p salesforce1
 
 sfdx force:apex:execute -f scripts/apex/createData.apex
 
+# sfdx force:user:permset:assign -n Recruiting_Manager -o mholmes,nsanchez
+
 # Open the org.
 sfdx force:org:open
