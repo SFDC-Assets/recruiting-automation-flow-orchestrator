@@ -1,6 +1,6 @@
 {
   "orgName": "dopoka company",
-  "edition": "Developer",
+  "edition": "Enterprise",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
