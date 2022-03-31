@@ -3,6 +3,7 @@
   "edition": "Enterprise",
   "features": ["EnableSetPasswordInApi", "ServiceUser", "SalesUser"],
   "settings": {
+    "securitySettings": {"enableAdminLoginAsAnyUser": true},
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
