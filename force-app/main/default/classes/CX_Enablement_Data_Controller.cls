@@ -26,20 +26,6 @@ public class CX_Enablement_Data_Controller {
         }
         private set;
     }
-
-    public Id recruitingPermSet{
-        get{
-            if(recruitingPermSet == null){
-                PermissionSet p = [SELECT Id
-                             FROM PermissionSet
-                             WHERE Name = 'Recruiting_Manager'
-                             LIMIT 1];
-                             recruitingPermSet = p.Id;
-            }
-            return recruitingPermSet;
-        }
-        private set;
-    }
     
     Id technicalPositionId = Schema.SObjectType.Position__c.getRecordTypeInfosByName().get('Technical Position').getRecordTypeId();
     
@@ -90,16 +76,10 @@ public class CX_Enablement_Data_Controller {
     
         users.add(user2);        
         insert users;
-        
-        PermissionSetAssignment psa1 = new PermissionSetAssignment (PermissionSetId = recruitingPermSet, AssigneeId = user1.Id);
-        insert psa1;
-
-        PermissionSetAssignment psa2 = new PermissionSetAssignment (PermissionSetId = recruitingPermSet, AssigneeId = user2.Id);
-        insert psa2;
 
         //Positions
         List<Position__c> positions = new List<Position__c>();
-        Position__c positionf1 = new Position__c(
+        Position__c position1 = new Position__c(
             Name  = 'Global Expense Specialist',
             Status__c  = 'Open',
             RecordTypeId = nonTechnicalPositionId, 
