@@ -142,7 +142,8 @@ public class CX_Enablement_Data_Controller {
             Hiring_Manager__c = user2.Id,
             Pay_Grade__c = 'IT-200',
             Programming_Languages__c = 'Java; Python; PHP',
-            Operating_Systems__c = 'Windows; Mac'
+            Operating_Systems__c = 'Windows; Mac',
+            OwnerId = user1.Id
         );
         positions.add(position6);
         
