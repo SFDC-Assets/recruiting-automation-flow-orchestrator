@@ -396,11 +396,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Review__c.Job_Application__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Review__c.Leadership_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
