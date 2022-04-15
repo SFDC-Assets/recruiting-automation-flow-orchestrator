@@ -9,6 +9,7 @@
         <field>Candidate__c.Batch_Load_Item__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Candidate__c.City__c</field>
         <readable>true</readable>
