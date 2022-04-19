@@ -5,7 +5,7 @@
         <name>Advance_to_Next_Round</name>
         <label>Advance to Next Round?</label>
         <locationX>182</locationX>
-        <locationY>551</locationY>
+        <locationY>431</locationY>
         <defaultConnector>
             <targetReference>Candidate_Rejected</targetReference>
         </defaultConnector>
@@ -30,7 +30,7 @@
         <name>Make_Offer</name>
         <label>Make Offer?</label>
         <locationX>182</locationX>
-        <locationY>887</locationY>
+        <locationY>767</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes_1</name>
@@ -54,7 +54,7 @@
         <name>Candidate_Rejected</name>
         <label>Candidate Rejected</label>
         <locationX>314</locationX>
-        <locationY>671</locationY>
+        <locationY>551</locationY>
         <connector>
             <targetReference>Make_Offer</targetReference>
         </connector>
@@ -65,14 +65,13 @@
             <actionType>stepBackground</actionType>
             <entryConditionLogic>and</entryConditionLogic>
             <label>Thank You for Your Interest</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
         <name>Create_and_Send_Offer_Stage</name>
         <label>Create and Send Offer</label>
         <locationX>50</locationX>
-        <locationY>1007</locationY>
+        <locationY>887</locationY>
         <exitConditionLogic>and</exitConditionLogic>
         <stageSteps>
             <name>Create_and_Send_Offer</name>
@@ -98,14 +97,13 @@
                 </value>
             </inputParameters>
             <label>Create and Send Offer</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
         <name>Hiring_Manager_Interview_Stage</name>
         <label>Hiring Manager Interview</label>
         <locationX>50</locationX>
-        <locationY>671</locationY>
+        <locationY>551</locationY>
         <connector>
             <targetReference>Make_Offer</targetReference>
         </connector>
@@ -116,7 +114,6 @@
             <actionType>stepBackground</actionType>
             <entryConditionLogic>and</entryConditionLogic>
             <label>Interview Scheduled</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
         <stageSteps>
             <name>Hiring_Manager_Interview</name>
@@ -149,14 +146,13 @@
                 </value>
             </inputParameters>
             <label>Hiring Manager Interview</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
         <name>Initial_Screening</name>
         <label>Initial Screening</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationY>311</locationY>
         <connector>
             <targetReference>Advance_to_Next_Round</targetReference>
         </connector>
@@ -185,7 +181,6 @@
                 </value>
             </inputParameters>
             <label>Enter Job Application</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
         <stageSteps>
             <name>Phone_Screen_Scheduled</name>
@@ -206,7 +201,6 @@
                 </value>
             </inputParameters>
             <label>Phone Screen Scheduled</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
         <stageSteps>
             <name>Recruiter_Phone_Screen</name>
@@ -214,7 +208,7 @@
             <actionType>stepInteractive</actionType>
             <assignees>
                 <assignee>
-                    <elementReference>Step_1_of_Initial_Setup.Outputs.vOwner</elementReference>
+                    <elementReference>$Record.Owner:User.Username</elementReference>
                 </assignee>
                 <assigneeType>User</assigneeType>
             </assignees>
@@ -239,31 +233,6 @@
                 </value>
             </inputParameters>
             <label>Recruiter Phone Screen</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
-        </stageSteps>
-    </orchestratedStages>
-    <orchestratedStages>
-        <name>Initial_Setup</name>
-        <label>Initial Setup</label>
-        <locationX>182</locationX>
-        <locationY>311</locationY>
-        <connector>
-            <targetReference>Initial_Screening</targetReference>
-        </connector>
-        <exitConditionLogic>and</exitConditionLogic>
-        <stageSteps>
-            <name>Step_1_of_Initial_Setup</name>
-            <actionName>Get_Position_Owner_Username</actionName>
-            <actionType>stepBackground</actionType>
-            <entryConditionLogic>and</entryConditionLogic>
-            <inputParameters>
-                <name>vRecord</name>
-                <value>
-                    <elementReference>$Record</elementReference>
-                </value>
-            </inputParameters>
-            <label>Step 1 of Initial Setup</label>
-            <requiresAsyncProcessing>false</requiresAsyncProcessing>
         </stageSteps>
     </orchestratedStages>
     <processMetadataValues>
@@ -289,7 +258,7 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Initial_Setup</targetReference>
+            <targetReference>Initial_Screening</targetReference>
         </connector>
         <object>Position__c</object>
         <recordTriggerType>Create</recordTriggerType>
