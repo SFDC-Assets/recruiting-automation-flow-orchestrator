@@ -5,7 +5,7 @@
         <name>Advance_to_Next_Round</name>
         <label>Advance to Next Round?</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationY>551</locationY>
         <defaultConnector>
             <targetReference>Candidate_Rejected</targetReference>
         </defaultConnector>
@@ -30,7 +30,7 @@
         <name>Make_Offer</name>
         <label>Make Offer?</label>
         <locationX>182</locationX>
-        <locationY>767</locationY>
+        <locationY>887</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes_1</name>
@@ -54,7 +54,7 @@
         <name>Candidate_Rejected</name>
         <label>Candidate Rejected</label>
         <locationX>314</locationX>
-        <locationY>551</locationY>
+        <locationY>671</locationY>
         <connector>
             <targetReference>Make_Offer</targetReference>
         </connector>
@@ -71,7 +71,7 @@
         <name>Create_and_Send_Offer_Stage</name>
         <label>Create and Send Offer</label>
         <locationX>50</locationX>
-        <locationY>887</locationY>
+        <locationY>1007</locationY>
         <exitConditionLogic>and</exitConditionLogic>
         <stageSteps>
             <name>Create_and_Send_Offer</name>
@@ -100,10 +100,27 @@
         </stageSteps>
     </orchestratedStages>
     <orchestratedStages>
+        <name>Get_Usernames</name>
+        <label>Get Usernames</label>
+        <locationX>182</locationX>
+        <locationY>311</locationY>
+        <connector>
+            <targetReference>Initial_Screening</targetReference>
+        </connector>
+        <exitConditionLogic>and</exitConditionLogic>
+        <stageSteps>
+            <name>Get_Usernames_Step</name>
+            <actionName>Get_Usernames</actionName>
+            <actionType>stepBackground</actionType>
+            <entryConditionLogic>and</entryConditionLogic>
+            <label>Get Usernames</label>
+        </stageSteps>
+    </orchestratedStages>
+    <orchestratedStages>
         <name>Hiring_Manager_Interview_Stage</name>
         <label>Hiring Manager Interview</label>
         <locationX>50</locationX>
-        <locationY>551</locationY>
+        <locationY>671</locationY>
         <connector>
             <targetReference>Make_Offer</targetReference>
         </connector>
@@ -152,7 +169,7 @@
         <name>Initial_Screening</name>
         <label>Initial Screening</label>
         <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationY>431</locationY>
         <connector>
             <targetReference>Advance_to_Next_Round</targetReference>
         </connector>
@@ -208,7 +225,7 @@
             <actionType>stepInteractive</actionType>
             <assignees>
                 <assignee>
-                    <elementReference>$Record.Owner:User.Username</elementReference>
+                    <elementReference>Get_Usernames_Step.Outputs.varNickSanchezUsername</elementReference>
                 </assignee>
                 <assigneeType>User</assigneeType>
             </assignees>
@@ -258,7 +275,7 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Initial_Screening</targetReference>
+            <targetReference>Get_Usernames</targetReference>
         </connector>
         <object>Position__c</object>
         <recordTriggerType>Create</recordTriggerType>
