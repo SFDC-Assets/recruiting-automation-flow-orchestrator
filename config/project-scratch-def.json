@@ -1,7 +1,8 @@
 {
-  "orgName": "dopoka company",
+  "orgName": "recruiting orchestrator",
   "edition": "Enterprise",
   "features": ["EnableSetPasswordInApi", "ServiceUser", "SalesUser"],
+  "adminEmail": "orchestrator@example.com",
   "settings": {
     "securitySettings": {"enableAdminLoginAsAnyUser": true},
     "lightningExperienceSettings": {
