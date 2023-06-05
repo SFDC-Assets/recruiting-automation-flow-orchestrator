@@ -2,7 +2,8 @@
 sfdx shane:org:create -f config/project-scratch-def.json -d 3 -s --wait 60 --userprefix flow -o orchestrator.demo
 
 # Push the metadata into the new scratch org.
-sfdx force:source:push
+sfdx force:source:deploy -p force-app
+sfdx force:source:deploy -p orchestrator
 
 # Assign user the permset
 sfdx force:user:permset:assign -n Recruiting_Manager
